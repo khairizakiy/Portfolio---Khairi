@@ -40,17 +40,21 @@ form.addEventListener('submit', function(e) {
             body: json
         })
         .then(async (response) => {
-            let json = await response.json();
-            if (response.status == 200) {
-                result.innerHTML = json.message;
-            } else {
-                console.log(response);
-                result.innerHTML = json.message;
-            }
+          let json = await response.json();
+          if (response.status == 200) {
+            result.innerHTML = json.message;
+            result.classList.remove("text-gray-500");
+            result.classList.add("text-green-500");
+          } else {
+            console.log(response);
+            result.innerHTML = json.message;
+            result.classList.remove("text-gray-500");
+            result.classList.add("text-red-500");
+          }
         })
-        .catch(error => {
-            console.log(error);
-            result.innerHTML = "Something went wrong!";
+        .catch((error) => {
+          console.log(error);
+          result.innerHTML = "Something went wrong!";
         })
         .then(function() {
             form.reset();
