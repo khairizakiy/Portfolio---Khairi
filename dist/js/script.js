@@ -63,3 +63,6 @@ form.addEventListener('submit', function(e) {
             }, 3000);
         });
 });
+
+
+console.log('this is Easter EGG')
